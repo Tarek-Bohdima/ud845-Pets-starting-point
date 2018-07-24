@@ -10,7 +10,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.android.pets.data.PetContract.PetEntry;
 
@@ -158,7 +160,7 @@ public class PetProvider extends ContentProvider {
 
         //Check that the name is not null
         String name = values.getAsString(PetEntry.COLUMN_PET_NAME);
-        if (name == null || name.length() == 0){
+        if (TextUtils.isEmpty(name)){
             throw new IllegalArgumentException("Pet requires a name");
         }
 
